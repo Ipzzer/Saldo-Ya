@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="lib" path="D:/ROSPENA/Software/librerias/ormlite-android-4.48.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/ROSPENA/Software/librerias/ormlite-core-4.48.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/ROSPENA/D E S A R R O L L O/Android/android-support-v7-appcompat/libs/android-support-v7-appcompat.jar"/>
+	<classpathentry kind="lib" path="D:/ROSPENA/Software/librerias/android-support-v4.jar"/>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="D:/ROSPENA/D E S A R R O L L O/Android/RapiPass/libs/androidannotations-api-2.7.1.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <RelativeLayout
+        android:id="@+id/Rly_container_title_card"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="Logo App"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_logo_white" />
+        
+    </RelativeLayout>
+    
+    <View
+        android:id="@+id/View_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="0.1dp"
+        android:layout_below="@+id/Rly_container_title_card" />
+
+    <RelativeLayout
+        android:id="@+id/Ll_container_consulta"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/View_separator"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/Txt_nombre_tarjeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/nombreT"
+                android:textColor="@color/azul"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/Edt_nombre_tarjeta"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+				android:textColor="@color/naranja"
+                android:ems="10" />
+
+            <TextView
+                android:id="@+id/Txt_numero_tarjeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/numeroT"
+				android:textColor="@color/azul"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/Edt_consulta_saldo"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:textColor="@color/naranja"
+                android:inputType="number" >
+                <requestFocus />
+            </EditText>
+
+            <Button
+                android:id="@+id/Btn_consulta_saldo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="23dp"
+                android:onClick="llamarServidor"
+                style="@style/btnStyleShakespeare" 
+                android:text="@string/buscar" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

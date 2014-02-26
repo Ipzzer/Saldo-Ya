@@ -1,0 +1,19 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#992416</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+    <color name="color_base_blue">#3F7AB6</color>
+    <color name="color_base_white">#FFFFFF</color>
+    <color name="color_base_sky">#0099cc</color>
+    <color name="color_base_gray">#6b6b6b</color>
+    <color name="color_base_gray_2">#ccc7c7</color>
+    <color name="color_base_transparent">#00000000</color>
+	<color name="naranja">#C2391A</color>
+	<color name="azul">#092d7d</color>
+	<color name="verde">#8bc453</color>
+</resources>

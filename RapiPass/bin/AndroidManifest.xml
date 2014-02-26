@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.artixworks.rapipass"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_logo_white"
+        android:label="@string/app_name" >
+        <activity
+            android:name="com.artixworks.rapipass.HomeActivity_"
+            android:label="@string/app_name"
+            android:theme="@style/AppBaseTheme"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.artixworks.rapipass.FragTarjetasGroupActivity_"
+            android:label="@string/app_name"
+            android:theme="@style/AppBaseTheme"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.artixworks.rapipass.SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppBaseTheme"
+            android:screenOrientation="portrait" >
+			<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.artixworks.rapipass.AboutActivity"
+            android:theme="@style/AppBaseTheme"
+            android:label="@string/title_activity_about" >
+        </activity>
+    </application>
+
+</manifest>
