@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import com.artixworks.datasave.DatabaseManager;
 import com.artixworks.datasave.Movimientos;
 import com.artixworks.datasave.Tarjetas;
+import com.artixworks.rapipass.FragTarjetasGroupActivity_;
 import com.artixworks.rapipass.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
@@ -24,6 +27,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private List<String> idCards;
     private String cardName = "";
     private String estadoTarjeta = "";
+    private Object [] objectReturn = new Object[4];
+    private String [] returnData = new String[4];
+    private long tarjeta;
     
     public ExpandableListAdapter(Activity context, List<String> idCard, Map<String, List<String>> cardCollection) {
         this.context = context;
@@ -56,6 +62,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView item_tcorredor = (TextView) convertView.findViewById(R.id.Txt_tarjetas_corredores);
         TextView item_transaccion = (TextView) convertView.findViewById(R.id.Txt_tarjetas_ultima_transaccion);
         Button eliminarTarjeta = (Button) convertView.findViewById(R.id.Btn_tarjetas_eliminar);
+        Button consultarSaldo = (Button) convertView.findViewById(R.id.Btn_tarjetas_consultar);
+        
+        item_tarjeta.setTypeface(Utils.loadFont(context));
+        item_tcorredor.setTypeface(Utils.loadFont(context));
+        item_transaccion.setTypeface(Utils.loadFont(context));
         
         Movimientos m = DatabaseManager.getInstance().getByIdMovimientos(cardName);
         item_tarjeta.setText(cardInfo);
@@ -63,17 +74,28 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         item_tcorredor.setText(estadoTarjeta);
         
         final String [] chapuza = cardInfo.split(":"); // :D
+        tarjeta = Long.parseLong(chapuza[1].trim());
         
         eliminarTarjeta.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				DatabaseManager.getInstance().deleteTarjeta(DatabaseManager.getInstance().getByIdTarjeta(chapuza[1].trim()));
-				DatabaseManager.getInstance().deleteMovimientos(DatabaseManager.getInstance().getByIdMovimientos(chapuza[1].trim()));
+//				DatabaseManager.getInstance().deleteTarjeta(DatabaseManager.getInstance().getByIdTarjeta(chapuza[1].trim()));
+//				DatabaseManager.getInstance().deleteMovimientos(DatabaseManager.getInstance().getByIdMovimientos(chapuza[1].trim()));
 				Toast.makeText(context, context.getString(R.string.tarjeta_eliminada) + chapuza[1].trim(), Toast.LENGTH_SHORT).show();
 			}
 		});
         
+        consultarSaldo.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Utils.presentarProgressBar(context);
+				Thread t = new Thread(obtenerSaldoHttp, "ObtenerData");
+				t.start();
+			}
+		});
+ 
 		return convertView;
 	}
 
@@ -111,6 +133,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView tipo_corredor = (TextView) convertView.findViewById(R.id.Txt_tipo_corredor);
         TextView saldo_tarjeta = (TextView) convertView.findViewById(R.id.Txt_tarjeta_saldo_corredor);
         
+        numero_tarjeta.setTypeface(Utils.loadFont(context));
+        saldo_tarjeta.setTypeface(Utils.loadFont(context));
+        
         numero_tarjeta.setText(cardName);
         Tarjetas t = DatabaseManager.getInstance().getByIdTarjeta(cardName);
         tipo_corredor.setText(t.getNombre());
@@ -129,4 +154,48 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	public boolean isChildSelectable(int groupPosition, int childPosition) {
 		return true;
 	}
+	
+	private Runnable obtenerSaldoHttp = new Runnable() {
+	    @Override
+	    public void run() {
+	    	System.out.println("Buscando saldo para >>> " + tarjeta);
+	    	objectReturn = HttpCalls.getHttpData(objectReturn, tarjeta);
+	        // Cuando acabe la descarga actualiza la interfaz
+	        handler.post(atenderResponse);
+	    }
+	};
+	
+	private Runnable atenderResponse = new Runnable() {
+	    @Override
+	    public void run() {
+	    	Utils.ocultarProgressBar();
+	    	if(objectReturn != null) {
+				if(objectReturn[0] instanceof Exception)
+					Utils.mostrarErrorConexion(context, (Exception) objectReturn[0]);
+				else if(objectReturn[0] instanceof String) {
+					for(int i = 0; i < objectReturn.length; i++) {
+						returnData[i] = (String) objectReturn[i];
+						final String idCard = returnData[0];
+						final String status = returnData[1];
+						final String credit = returnData[2];
+						final String date = returnData[3];
+						Tarjetas t = new Tarjetas();
+						Movimientos m = new Movimientos();
+						t.setIdTarjeta(idCard);
+						t.setEstado(status);
+						t.setSaldo(credit);
+						t.setNombre(DatabaseManager.getInstance().getByIdTarjeta(idCard).getNombre());
+						m.setIdMovimientos(idCard);
+						m.setFechas(date);
+						DatabaseManager.getInstance().insertTarjeta(t, m);
+						t = null; m = null;
+					}
+				}else
+					Toast.makeText(context, context.getString(R.string.sin_conexion), Toast.LENGTH_LONG).show();
+			}else
+				Toast.makeText(context, context.getString(R.string.sin_conexion), Toast.LENGTH_LONG).show();
+	    }
+	};
+	
+	private Handler handler = new Handler();
 }
