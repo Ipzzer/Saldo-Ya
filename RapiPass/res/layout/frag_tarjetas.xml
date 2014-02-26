@@ -7,6 +7,7 @@
         android:id="@+id/Rly_container_nueva_tarjeta"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        style="@style/titleBarBlue"
         android:orientation="horizontal" >
 
         <TextView
@@ -15,20 +16,28 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:text="@string/texto_nueva_tarjeta"
-            android:textColor="@color/color_base_gray"
-            android:textSize="20sp" 
-            android:paddingTop="10dp"/>
+			android:shadowColor="#000000"
+	        android:shadowDx="1"
+	        android:shadowDy="1"
+	        android:shadowRadius="0.6"
+	        android:textColor="@color/color_base_white"
+            android:textSize="18sp" 
+            android:paddingTop="15dp"/>
 
-        <ImageButton
+        <ImageView
             android:id="@+id/buttonAddCard"
+            android:background="@drawable/button_add_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:adjustViewBounds="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:onClick="addCard"
             android:contentDescription="@string/content_description_image"
-            android:scaleType="centerCrop"
-            android:src="@android:drawable/ic_input_add" />
+            android:onClick="addCard"
+            android:scaleType="centerInside"
+             />
+
     </RelativeLayout>
 
     <View

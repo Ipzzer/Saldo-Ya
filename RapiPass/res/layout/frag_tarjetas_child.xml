@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/childItemExpandableStyle"
     android:orientation="vertical"
     android:padding="20dp" >
 
@@ -10,6 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:textColor="@color/azul"
             android:layout_alignParentTop="true"
             android:paddingBottom="3dp" />
         
@@ -17,6 +19,7 @@
             android:id="@+id/Txt_tarjetas_corredores"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/azul"
             android:layout_alignLeft="@+id/Txt_tarjetas_numero"
             android:layout_below="@+id/Txt_tarjetas_numero"
             android:paddingBottom="3dp" />
@@ -25,14 +28,25 @@
             android:id="@+id/Txt_tarjetas_ultima_transaccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/azul"
             android:layout_alignLeft="@+id/Txt_tarjetas_corredores"
             android:layout_below="@+id/Txt_tarjetas_corredores"
             android:paddingBottom="7dp"
             android:text="@string/texto_ultima_transaccion" />
 
+		<Button
+            android:id="@+id/Btn_tarjetas_consultar"
+            style="@style/btnStyleGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/Txt_tarjetas_ultima_transaccion"
+            android:layout_alignParentLeft="true"
+            android:text="@string/buscar" />
+                
         <Button
             android:id="@+id/Btn_tarjetas_eliminar"
-            style="@style/Base_button_red"
+            style="@style/btnStyleRed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
