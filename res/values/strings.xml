@@ -5,7 +5,7 @@
     <string name="action_settings">Acerca de</string>
     <string name="titulo_tarjetas">Mis Tarjetas</string>
     <string name="texto_ultima_transaccion">"Última transacción: "</string>
-    <string name="texto_nueva_tarjeta">Nueva Tarjeta</string>
+    <string name="texto_nueva_tarjeta">Nueva Tarjeta </string>
     <string name="menu_consulta">Consulta</string>
     <string name="menu_tarjetas">Tarjetas</string>
     <string name="btn_aceptar">Aceptar</string>
@@ -30,4 +30,5 @@
 	<string name="sin_conexion">"No se puede conectar con el servidor"</string>
 	<string name="acerca_de_version_number">Versión 1.0</string>
 	<string name="acerca_de_derechos">"&#169; 2013 -2014 Peluche Software\nDerechos Reservados"</string>
+	<string name="consultando">Consultando saldo ...</string>
 </resources>
