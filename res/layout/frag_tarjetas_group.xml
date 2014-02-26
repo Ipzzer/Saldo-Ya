@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/itemExpandableStyle"
     android:orientation="vertical"
     android:padding="10dp" >
  
@@ -9,9 +10,8 @@
         android:id="@+id/Txt_numero_tarjeta_corredor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00756643"
         android:textSize="18sp"
-        android:textColor="@color/color_base_blue"
+        android:textColor="@color/color_base_white"
         android:paddingLeft="24dp"/>
 
     <TextView
@@ -22,8 +22,7 @@
         android:textSize="12sp"
         android:layout_alignLeft="@+id/Txt_numero_tarjeta_corredor"
         android:layout_below="@+id/Txt_numero_tarjeta_corredor"
-        android:paddingLeft="24dp"
-        android:text="Corredor Norte" />
+        android:paddingLeft="24dp"/>
 
     <TextView
         android:id="@+id/Txt_tarjeta_saldo_corredor"
@@ -32,10 +31,13 @@
         android:layout_alignBottom="@+id/Txt_tipo_corredor"
         android:layout_alignParentRight="true"
         android:gravity="center"
-        android:textSize="25sp"
-        android:textColor="@color/color_base_blue"
+        android:textSize="24sp"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="0.3"
+        android:textColor="@color/color_base_white"
         android:textStyle="bold"
-        android:layout_alignTop="@+id/Txt_numero_tarjeta_corredor"
-        android:text="$25.00" />
+        android:layout_alignTop="@+id/Txt_numero_tarjeta_corredor" />
     
 </RelativeLayout>
