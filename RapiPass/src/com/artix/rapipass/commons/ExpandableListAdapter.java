@@ -2,9 +2,9 @@ package com.artix.rapipass.commons;
 
 import java.util.List;
 import java.util.Map;
+
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.artixworks.datasave.DatabaseManager;
 import com.artixworks.datasave.Movimientos;
 import com.artixworks.datasave.Tarjetas;
-import com.artixworks.rapipass.FragTarjetasGroupActivity_;
 import com.artixworks.rapipass.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
