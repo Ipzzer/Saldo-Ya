@@ -1,18 +1,7 @@
 package com.artixworks.rapipass;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.SocketTimeoutException;
-import java.net.URL;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
@@ -23,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.artix.rapipass.commons.HttpCalls;
 import com.artix.rapipass.commons.Utils;
 import com.artixworks.datasave.DatabaseManager;
 import com.artixworks.datasave.Movimientos;
@@ -43,7 +33,6 @@ public class HomeActivity extends Activity {
 	@ViewById TextView Txt_numero_tarjeta;
 	AlertDialog.Builder builder = null;
 	private String[] returnData = new String[4];
-	private ProgressDialog ringProgressDialog;
 	
 	
 	@AfterViews
@@ -58,56 +47,20 @@ public class HomeActivity extends Activity {
 
 	@Background
 	void connectItem(long tarjeta) {
-		
+		Object objectReturn [] = new Object[4];
 		presentarProgressBar();//Abre el progressDialog
-		HttpURLConnection urlConnection = null;
-
-		try {
-			StringBuilder peticion = new StringBuilder();
-			peticion.append(
-					"http://200.46.245.230:8080/PortalCAE-WAR-MODULE/SesionPortalServlet?accion=6&NumDistribuidor=99&NomUsuario=usuInternet&NomHost=AFT&NomDominio=aft.cl&Trx=&RutUsuario=0&NumTarjeta=")
-					.append(tarjeta).append("&bloqueable=");
-
-			URL url = new URL(peticion.toString());
-			urlConnection = (HttpURLConnection) url.openConnection();
-
-			urlConnection.setReadTimeout(10000);
-			urlConnection.setConnectTimeout(10000);
-
-			urlConnection.setRequestMethod("GET");
-			urlConnection.setDoOutput(true);
-			urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-
-			urlConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36");
-
-			OutputStreamWriter request = new OutputStreamWriter(urlConnection.getOutputStream());
-			request.flush();
-			request.close();
-
-			InputStream inputStream = urlConnection.getInputStream();
-
-			BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream));
-			String line;
-			int acum = 0;
-
-			while ((line = rd.readLine()) != null) {
-				acum = acum + 1;
-
-				if (acum == 264) {
-					returnData[0] = regex(line);
-				} else if (acum == 266) {
-					returnData[1] = regex(line);
-				} else if (acum == 272) {
-					returnData[2] = regex(line);
-				} else if (acum == 274) {
-					returnData[3] = regex(line);
+		objectReturn = HttpCalls.getHttpData(objectReturn, tarjeta);
+		
+		if(objectReturn != null) {
+			if(objectReturn[0] instanceof Exception)
+				mostrarErrorConexion((Exception) objectReturn[0]);
+			else if(objectReturn[0] instanceof String) {
+				actualizarEstadoDescarga();
+				
+				for(int i = 0; i < objectReturn.length; i++) {
+					returnData[i] = (String) objectReturn[i];
 				}
 			}
-			actualizarEstadoDescarga();//Cierra el progressDialog y actualiza la interfaz con el resultado
-		} catch (Exception ex) {
-			mostrarErrorConexion(ex);
-		} finally {
-			urlConnection.disconnect();
 		}
 	}
 
@@ -116,8 +69,7 @@ public class HomeActivity extends Activity {
 	 */
 	@UiThread
 	void presentarProgressBar() {
-		ringProgressDialog = ProgressDialog.show(HomeActivity.this, getString(R.string.msg_progress_1), getString(R.string.msg_progress_2), true);
-		ringProgressDialog.setCancelable(true);
+		Utils.presentarProgressBar(this);
 	}
 
 	/**
@@ -125,7 +77,8 @@ public class HomeActivity extends Activity {
 	 */
 	@UiThread
 	void actualizarEstadoDescarga() {
-		ringProgressDialog.dismiss();
+//		ringProgressDialog.dismiss();
+		Utils.ocultarProgressBar();
 		builder = new AlertDialog.Builder(HomeActivity.this);
 		final String idCard = returnData[0];
 		final String status = returnData[1];
@@ -171,18 +124,6 @@ public class HomeActivity extends Activity {
 		alert.show();
 	}
 
-	private String regex(String cadena) {
-		cadena.trim();
-		Pattern pattern = Pattern.compile("<[^>]*>([^<]*)</[^>]*>");
-		Matcher matcher = pattern.matcher(cadena);
-
-		while (matcher.find()) {
-			System.out.println(matcher.group(1));
-			return matcher.group(1);
-		}
-		return null;
-	}
-
 	/**
 	 * Evento del boton Consultar Saldo
 	 * @param v
@@ -217,12 +158,13 @@ public class HomeActivity extends Activity {
 	
 	@UiThread
 	void mostrarErrorConexion(Exception e) {
-		if(e instanceof SocketTimeoutException) {
-			Toast.makeText(getApplicationContext(), getString(R.string.time_out), Toast.LENGTH_LONG).show();
-		}else {
-			Toast.makeText(getApplicationContext(), getString(R.string.sin_conexion), Toast.LENGTH_LONG).show();
-		}
-		ringProgressDialog.dismiss();
+//		if(e instanceof SocketTimeoutException) {
+//			Toast.makeText(getApplicationContext(), getString(R.string.time_out), Toast.LENGTH_LONG).show();
+//		}else {
+//			Toast.makeText(getApplicationContext(), getString(R.string.sin_conexion), Toast.LENGTH_LONG).show();
+//		}
+//		Utils.ocultarProgressBar();
+		Utils.mostrarErrorConexion(getApplicationContext(), e);
 	}
 	
 	@Override

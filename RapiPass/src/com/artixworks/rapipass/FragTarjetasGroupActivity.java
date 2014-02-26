@@ -12,9 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.artix.rapipass.commons.ExpandableListAdapter;
+import com.artix.rapipass.commons.Utils;
 import com.artixworks.datasave.DatabaseManager;
 import com.artixworks.datasave.Tarjetas;
 import com.googlecode.androidannotations.annotations.AfterViews;
@@ -28,10 +30,12 @@ public class FragTarjetasGroupActivity extends Activity {
 	private List<String> childList;
 	private Map<String, List<String>> tarjetCollection;
 	@ViewById ExpandableListView Expandable_tarjet_list;
+	@ViewById TextView textView1;
 	private final static int RESULT_ADD_CARD = 1;
 	
 	@AfterViews
 	void mostrarDatosLista() {
+		textView1.setTypeface(Utils.loadFont(getApplicationContext()));
 		DatabaseManager.init(getApplicationContext());
 		createGroupList();
 		createCollection();
@@ -81,7 +85,6 @@ public class FragTarjetasGroupActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
         case RESULT_ADD_CARD://Espera el resultado de la pantalla de configuracion
-        	Toast.makeText(getApplicationContext(), "Actualizando lista ... ", Toast.LENGTH_SHORT).show();
         	mostrarDatosLista();
             break;
         }
@@ -105,5 +108,11 @@ public class FragTarjetasGroupActivity extends Activity {
 	        default:
 	            return super.onOptionsItemSelected(item);
 	        } 
+	}
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		finish();
 	}
 }
