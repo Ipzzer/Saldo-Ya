@@ -1,92 +1,86 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/blue_gradient"
     android:layout_height="match_parent" >
-    
-    <RelativeLayout
-        android:id="@+id/Rly_container_title_card"
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:contentDescription="Logo App"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_logo_white" />
-        
-    </RelativeLayout>
-    
-    <View
-        android:id="@+id/View_separator"
-        android:layout_width="wrap_content"
-        android:layout_height="0.1dp"
-        android:layout_below="@+id/Rly_container_title_card" />
-
-    <RelativeLayout
-        android:id="@+id/Ll_container_consulta"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/View_separator"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp" >
+        android:background="@drawable/grey_gradient_rounded"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical" >
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/Txt_title_frame"
+            android:background="@drawable/orange_gradient_rounded_up"
             android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="0.6"
+            android:paddingLeft="10dp"
+            android:text="@string/texto_nueva_tarjeta"
+            android:textColor="@color/color_base_white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/Txt_nombre_tarjeta"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical" >
+            android:padding="10dp"
+            android:text="@string/nombreT"
+            android:textColor="@color/azul"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/Txt_nombre_tarjeta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/nombreT"
-                android:textColor="@color/azul"
-                android:textSize="18sp" />
+        <EditText
+            android:id="@+id/Edt_nombre_tarjeta"
+            android:layout_width="match_parent"
+            android:background="@drawable/shape_text_field_up"
+            android:layout_height="40dp"
+            android:inputType="textCapSentences"
+            android:layout_marginRight="10dp"
+			android:layout_marginLeft="10dp"
+            android:ems="10"
+            android:textColor="@color/azul" />
 
-            <EditText
-                android:id="@+id/Edt_nombre_tarjeta"
-                android:inputType="textCapSentences"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-				android:textColor="@color/naranja"
-                android:ems="10" />
+        <TextView
+            android:id="@+id/Txt_numero_tarjeta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/numeroT"
+            android:textColor="@color/azul"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/Txt_numero_tarjeta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/numeroT"
-				android:textColor="@color/azul"
-                android:textSize="18sp" />
+        <EditText
+            android:id="@+id/Edt_consulta_saldo"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginLeft="10dp"
+			android:background="@drawable/shape_text_field_down"
+            android:inputType="number"
+            android:textColor="@color/azul" >
+            <requestFocus />
+        </EditText>
 
-            <EditText
-                android:id="@+id/Edt_consulta_saldo"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:textColor="@color/naranja"
-                android:inputType="number" >
-                <requestFocus />
-            </EditText>
-
-            <Button
-                android:id="@+id/Btn_consulta_saldo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="23dp"
-                android:onClick="llamarServidor"
-                style="@style/btnStyleShakespeare" 
-                android:text="@string/buscar" />
-
-        </LinearLayout>
-    </RelativeLayout>
+        <Button
+            android:id="@+id/Btn_consulta_saldo"
+            style="@style/btnStyleShakespeare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="llamarServidor"
+            android:layout_marginTop="20dp"
+			android:layout_marginBottom="10dp"
+            android:text="@string/buscar" />
+    </LinearLayout>
 
 </RelativeLayout>
