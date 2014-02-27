@@ -11,9 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.artix.rapipass.commons.ExpandableListAdapter;
 import com.artix.rapipass.commons.Utils;
@@ -41,15 +39,6 @@ public class FragTarjetasGroupActivity extends Activity {
 		createCollection();
 		final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(this, groupList, tarjetCollection);
 		Expandable_tarjet_list.setAdapter(expListAdapter);
-		Expandable_tarjet_list.setOnChildClickListener(new OnChildClickListener() {
-			
-			@Override
-			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-				final String selected = (String) expListAdapter.getChild(groupPosition, childPosition);
-                Toast.makeText(getApplicationContext(), selected, Toast.LENGTH_LONG).show();
-				return true;
-			}
-		});
 	}
 	
     private void createGroupList() {
@@ -102,17 +91,11 @@ public class FragTarjetasGroupActivity extends Activity {
 	    // Handle item selection
 	    switch (item.getItemId()) {
 	        case R.id.about_screen:
-	        	Intent i = new Intent(this, AboutActivity.class);
+	        	Intent i = new Intent(this, AboutActivity_.class);
 	        	startActivity(i);
 	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	        } 
-	}
-	
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		finish();
 	}
 }

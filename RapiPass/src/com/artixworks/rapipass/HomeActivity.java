@@ -31,6 +31,7 @@ public class HomeActivity extends Activity {
 	@ViewById Button Btn_consulta_saldo;
 	@ViewById TextView Txt_nombre_tarjeta;
 	@ViewById TextView Txt_numero_tarjeta;
+	@ViewById TextView Txt_title_frame;
 	AlertDialog.Builder builder = null;
 	private String[] returnData = new String[4];
 	
@@ -42,6 +43,7 @@ public class HomeActivity extends Activity {
 		Txt_nombre_tarjeta.setTypeface(Utils.loadFont(getApplicationContext()));
 		Btn_consulta_saldo.setTypeface(Utils.loadFont(getApplicationContext()));
 		Txt_numero_tarjeta.setTypeface(Utils.loadFont(getApplicationContext()));
+		Txt_title_frame.setTypeface(Utils.loadFont(getApplicationContext()));
 		DatabaseManager.init(getApplicationContext());
 	}
 
@@ -77,7 +79,6 @@ public class HomeActivity extends Activity {
 	 */
 	@UiThread
 	void actualizarEstadoDescarga() {
-//		ringProgressDialog.dismiss();
 		Utils.ocultarProgressBar();
 		builder = new AlertDialog.Builder(HomeActivity.this);
 		final String idCard = returnData[0];
@@ -158,12 +159,6 @@ public class HomeActivity extends Activity {
 	
 	@UiThread
 	void mostrarErrorConexion(Exception e) {
-//		if(e instanceof SocketTimeoutException) {
-//			Toast.makeText(getApplicationContext(), getString(R.string.time_out), Toast.LENGTH_LONG).show();
-//		}else {
-//			Toast.makeText(getApplicationContext(), getString(R.string.sin_conexion), Toast.LENGTH_LONG).show();
-//		}
-//		Utils.ocultarProgressBar();
 		Utils.mostrarErrorConexion(getApplicationContext(), e);
 	}
 	
@@ -172,7 +167,7 @@ public class HomeActivity extends Activity {
 	    // Handle item selection
 	    switch (item.getItemId()) {
 	        case R.id.about_screen:
-	        	Intent i = new Intent(this, AboutActivity.class);
+	        	Intent i = new Intent(this, AboutActivity_.class);
 	        	startActivity(i);
 	        	return true;
 	        default:

@@ -48,8 +48,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override
-	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-		
+	public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, final ViewGroup parent) {
+		//System.out.println("EJECUTO CHILD VIEW " + groupPosition + " CHILD IS " + childPosition);
 		final String cardInfo = (String) getChild(groupPosition, childPosition);
         LayoutInflater inflater = context.getLayoutInflater();
         
@@ -74,14 +74,20 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         
         final String [] chapuza = cardInfo.split(":"); // :D
         tarjeta = Long.parseLong(chapuza[1].trim());
-        
+                
         eliminarTarjeta.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-//				DatabaseManager.getInstance().deleteTarjeta(DatabaseManager.getInstance().getByIdTarjeta(chapuza[1].trim()));
-//				DatabaseManager.getInstance().deleteMovimientos(DatabaseManager.getInstance().getByIdMovimientos(chapuza[1].trim()));
-				Toast.makeText(context, context.getString(R.string.tarjeta_eliminada) + chapuza[1].trim(), Toast.LENGTH_SHORT).show();
+				
+				DatabaseManager.getInstance().deleteTarjeta(DatabaseManager.getInstance().getByIdTarjeta(chapuza[1].trim()));
+				DatabaseManager.getInstance().deleteMovimientos(DatabaseManager.getInstance().getByIdMovimientos(chapuza[1].trim()));
+				
+				List<String> child =
+				cardCollectionsInfo.get(idCards.get(groupPosition));
+				child.remove(childPosition);
+				idCards.remove(groupPosition);//Como esto es lo que contiene los ecabezados, se elimina de aqui y se elimina de la vista automaticamente
+                notifyDataSetChanged();
 			}
 		});
         
@@ -119,7 +125,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override
-	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+	public View getGroupView(final int groupPosition, final boolean isExpanded, View convertView, ViewGroup parent) {
+		
 		cardName = (String) getGroup(groupPosition);
 		estadoTarjeta = "";
 		
@@ -141,6 +148,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         saldo_tarjeta.setText("$" + t.getSaldo());
         estadoTarjeta = t.getEstado();
         t = null;
+        
         return convertView;
 	}
 
