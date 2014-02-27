@@ -37,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.artixworks.rapipass.AboutActivity"
+            android:name="com.artixworks.rapipass.AboutActivity_"
             android:theme="@style/AppBaseTheme"
             android:label="@string/title_activity_about" >
         </activity>
