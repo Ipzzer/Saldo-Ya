@@ -15,8 +15,8 @@
     <string name="content_description_image">Imagen</string>
     <string name="content_description_splash">Logotipo de Peluche</string>
     <string name="buscar">Consultar Saldo</string>
-    <string name="nombreT">Nombre de Tarjeta:</string>
-    <string name="numeroT">Número de Tarjeta:</string>
+    <string name="nombreT">Nombre de Tarjeta</string>
+    <string name="numeroT">Número de Tarjeta</string>
     <string name="mensaje">Su saldo actual es de: B/.%1$s \nSu último movimiento fue el %2$s</string>
     <string name="title_activity_about">"Sobre nosotros . . . "</string>
     <string name="tarjeta_eliminada">"Tarjeta eliminada"</string>
