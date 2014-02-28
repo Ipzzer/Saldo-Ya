@@ -24,7 +24,7 @@
 		    android:contentDescription="@string/app_name"
 		    android:gravity="center"
 		    android:scaleType="fitEnd"
-		    android:src="@drawable/logo_app_600" />
+		    android:src="@drawable/ic_tarjeta" />
 		
 		<TextView
 	        android:id="@+id/textViewSoftName"
