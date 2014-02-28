@@ -11,8 +11,9 @@ import java.util.regex.Pattern;
 
 public class HttpCalls {
 
-	public static Object[] getHttpData(Object [] returnData, long tarjeta) {
+	public static Object[] getHttpData(long tarjeta) {
 		HttpURLConnection urlConnection = null;
+		Object returnData [] = new Object[4];
 
 		try {
 			StringBuilder peticion = new StringBuilder();
@@ -55,7 +56,7 @@ public class HttpCalls {
 					returnData[3] = regex(line);
 				}
 			}
-			
+		
 			return returnData;
 		} catch (Exception ex) {
 			returnData[0] = ex;
@@ -71,9 +72,9 @@ public class HttpCalls {
 		Matcher matcher = pattern.matcher(cadena);
 
 		while (matcher.find()) {
-			System.out.println(matcher.group(1));
 			return matcher.group(1);
 		}
+	
 		return null;
 	}
 }
