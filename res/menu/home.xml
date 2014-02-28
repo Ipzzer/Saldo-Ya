@@ -4,6 +4,7 @@
         android:id="@+id/about_screen"
         android:orderInCategory="100"
         android:showAsAction="never"
+        android:icon="@drawable/ic_action_about"
         android:title="@string/action_settings"/>
 
 </menu>
