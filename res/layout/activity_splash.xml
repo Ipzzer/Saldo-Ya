@@ -26,6 +26,6 @@
         android:contentDescription="@string/content_description_splash"
         android:cropToPadding="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/logo_app_600" />
+        android:src="@drawable/ic_tarjeta" />
 
 </RelativeLayout>
