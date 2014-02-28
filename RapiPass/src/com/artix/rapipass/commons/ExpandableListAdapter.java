@@ -166,7 +166,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	    @Override
 	    public void run() {
 	    	System.out.println("Buscando saldo para >>> " + tarjeta);
-	    	objectReturn = HttpCalls.getHttpData(objectReturn, tarjeta);
+	    	objectReturn = HttpCalls.getHttpData(tarjeta);
 	        // Cuando acabe la descarga actualiza la interfaz
 	        handler.post(atenderResponse);
 	    }
