@@ -4,19 +4,28 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center"
-    android:background="@drawable/backgroung_repeat"
     tools:context=".SplashActivity" >
 
     <ImageView
         android:id="@+id/Img_splash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="false"
         android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
         android:layout_centerVertical="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:adjustViewBounds="true"
+        android:baselineAlignBottom="false"
         android:contentDescription="@string/content_description_splash"
+        android:cropToPadding="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/logo_splash4" />
+        android:src="@drawable/logo_app_600" />
 
 </RelativeLayout>
