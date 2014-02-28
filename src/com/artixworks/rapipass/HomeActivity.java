@@ -51,17 +51,18 @@ public class HomeActivity extends Activity {
 	void connectItem(long tarjeta) {
 		Object objectReturn [] = new Object[4];
 		presentarProgressBar();//Abre el progressDialog
-		objectReturn = HttpCalls.getHttpData(objectReturn, tarjeta);
+		objectReturn = HttpCalls.getHttpData(tarjeta);
 		
 		if(objectReturn != null) {
 			if(objectReturn[0] instanceof Exception)
 				mostrarErrorConexion((Exception) objectReturn[0]);
 			else if(objectReturn[0] instanceof String) {
-				actualizarEstadoDescarga();
 				
 				for(int i = 0; i < objectReturn.length; i++) {
 					returnData[i] = (String) objectReturn[i];
 				}
+				
+				actualizarEstadoDescarga();
 			}
 		}
 	}
@@ -85,8 +86,9 @@ public class HomeActivity extends Activity {
 		final String status = returnData[1];
 		final String credit = returnData[2];
 		final String date = returnData[3];
-
-		if (status != null) {
+		
+		System.out.println("Retornando idCard desde la web " + idCard);
+		if (idCard != null) {
 			builder.setMessage(getString(R.string.mensaje, credit, date));
 			builder.setPositiveButton(getString(R.string.btn_guardar),
 					new DialogInterface.OnClickListener() {
