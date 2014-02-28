@@ -36,13 +36,13 @@ public class AboutActivity extends Activity {
 	}
 	
 	public void openFacebook(View v) {
-		Uri uri = Uri.parse("http://www.facebook.com");
+		Uri uri = Uri.parse("http://www.facebook.com/android.panama");
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 		startActivity(intent);
 	}
 	
 	public void openTwitter(View v) {
-		Uri uri = Uri.parse("http://www.twitter.com");
+		Uri uri = Uri.parse("http://www.twitter.com/artixworks");
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 		startActivity(intent);
 	}
