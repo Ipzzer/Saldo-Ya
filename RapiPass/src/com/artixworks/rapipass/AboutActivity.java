@@ -46,4 +46,10 @@ public class AboutActivity extends Activity {
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 		startActivity(intent);
 	}
+	
+	public void openArtix(View v) {
+		Uri uri = Uri.parse("http://artixworks.com/");
+		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+		startActivity(intent);
+	}
 }
