@@ -25,6 +25,7 @@ public class Utils {
 	
 	public static void presentarProgressBar(Context context) {
 		ringProgressDialog = ProgressDialog.show(context, context.getString(R.string.msg_progress_1), context.getString(R.string.msg_progress_2), true);
+		ringProgressDialog.setIcon(R.drawable.ic_action_refresh);
 		ringProgressDialog.setCancelable(true);
 	}
 	
