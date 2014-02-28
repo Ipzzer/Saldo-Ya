@@ -18,6 +18,6 @@
         android:contentDescription="@string/content_description_splash"
         android:cropToPadding="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/logo_app" />
+        android:src="@drawable/ic_logo" />
 
 </RelativeLayout>
