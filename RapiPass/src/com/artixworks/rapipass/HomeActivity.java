@@ -90,6 +90,7 @@ public class HomeActivity extends Activity {
 		System.out.println("Retornando idCard desde la web " + idCard);
 		if (idCard != null) {
 			builder.setMessage(getString(R.string.mensaje, credit, date));
+			builder.setIcon(R.drawable.ic_action_accept);
 			builder.setPositiveButton(getString(R.string.btn_guardar),
 					new DialogInterface.OnClickListener() {
 						@Override
@@ -111,6 +112,7 @@ public class HomeActivity extends Activity {
 					});
 		} else {
 			builder.setMessage(getString(R.string.numero_invalido));
+			builder.setIcon(R.drawable.ic_action_cancel);
 		}
 		builder.setCancelable(false);
 		builder.setTitle(getString(R.string.saldo_disponible));
