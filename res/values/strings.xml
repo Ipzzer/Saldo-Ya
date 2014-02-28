@@ -29,6 +29,7 @@
 	<string name="time_out">"Tiempo de espera agotado"</string>
 	<string name="sin_conexion">"No se puede conectar con el servidor"</string>
 	<string name="acerca_de_version_number">Versión 1.0</string>
-	<string name="acerca_de_derechos">"&#169; 2013 -2014 Peluche Software\nDerechos Reservados"</string>
+	<string name="acerca_de_derechos">"&#169; 2013 -2014 Artixworks\nDerechos Reservados"</string>
 	<string name="consultando">Consultando saldo ...</string>
+	<string name="info_actualizada">Los datos han sido actualizados</string>
 </resources>

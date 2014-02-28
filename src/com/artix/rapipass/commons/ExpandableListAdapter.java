@@ -196,6 +196,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 						m.setFechas(date);
 						DatabaseManager.getInstance().insertTarjeta(t, m);
 						t = null; m = null;
+						notifyDataSetChanged();
+						Toast.makeText(context, context.getString(R.string.info_actualizada), Toast.LENGTH_LONG).show();
 					}
 				}else
 					Toast.makeText(context, context.getString(R.string.sin_conexion), Toast.LENGTH_LONG).show();
