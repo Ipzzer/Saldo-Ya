@@ -28,7 +28,7 @@
 	<string name="ingrese_num_tarjeta">"Ingrese un número de tarjeta"</string>
 	<string name="time_out">"Tiempo de espera agotado"</string>
 	<string name="sin_conexion">"No se puede conectar con el servidor"</string>
-	<string name="acerca_de_version_number">Versión 1.01</string>
+	<string name="acerca_de_version_number">Versión 1.02</string>
 	<string name="acerca_de_derechos">"&#169; 2013 -2014 Artixworks®\n Derechos Reservados"</string>
 	<string name="consultando">Consultando saldo ...</string>
 	<string name="info_actualizada">Los datos han sido actualizados</string>
