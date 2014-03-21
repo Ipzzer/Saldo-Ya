@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Saldo Ya!</string>
+    <string name="action_settings">About us</string>
+    <string name="titulo_tarjetas">My Cards</string>
+    <string name="texto_ultima_transaccion">"Last transaction: "</string>
+    <string name="texto_nueva_tarjeta">New Card </string>
+    <string name="menu_consulta">Consulta</string>
+    <string name="menu_tarjetas">Cards</string>
+    <string name="btn_aceptar">OK</string>
+    <string name="btn_guardar">Save</string>
+    <string name="btn_eliminar">Delete card</string>
+    <string name="btn_recargar">Reload</string>
+    <string name="content_description_image">Image</string>
+    <string name="content_description_splash">Tedys logo</string>
+    <string name="buscar">Check Balance</string>
+    <string name="nombreT">Card Name</string>
+    <string name="numeroT">Card ID</string>
+    <string name="mensaje">Your current balance is: B/.%1$s \nYour last transaction was %2$s</string>
+    <string name="title_activity_about">"About us . . . "</string>
+    <string name="tarjeta_eliminada">"Card deleted"</string>
+	<string name="msg_progress_1">"Please wait ... "</string>
+	<string name="msg_progress_2">"Balance consulting"</string>
+	<string name="tarjeta_almacenada">"Card saved"</string>
+	<string name="numero_invalido">"Card ID wrong. Please retry."</string>
+	<string name="saldo_disponible">"Available balance"</string>
+	<string name="ingrese_num_tarjeta">"Enter a card ID"</string>
+	<string name="time_out">"Timed out"</string>
+	<string name="sin_conexion">"Canott connect to internet"</string>
+	<string name="acerca_de_version_number">Version 1.02</string>
+	<string name="acerca_de_derechos">"&#169; 2013 -2014 Artixworks®\n All Rights Reserved"</string>
+	<string name="consultando">Balance consulting ...</string>
+	<string name="info_actualizada">The data have been updated</string>
+</resources>
