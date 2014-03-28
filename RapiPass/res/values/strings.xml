@@ -18,9 +18,9 @@
     <string name="nombreT">Nombre de Tarjeta</string>
     <string name="numeroT">Número de Tarjeta</string>
     <string name="mensaje">Su saldo actual es de: B/.%1$s \nSu último movimiento fue el %2$s</string>
-    <string name="title_activity_about">"Sobre nosotros . . . "</string>
+    <string name="title_activity_about">Sobre nosotros&#8230;</string>
     <string name="tarjeta_eliminada">"Tarjeta eliminada"</string>
-	<string name="msg_progress_1">"Por favor espere ... "</string>
+	<string name="msg_progress_1">Por favor espere&#8230;</string>
 	<string name="msg_progress_2">"Consultando saldo"</string>
 	<string name="tarjeta_almacenada">"Tarjeta Almacenada"</string>
 	<string name="numero_invalido">"Número de Tarjeta Invalido. Vuelva a intentar."</string>
@@ -30,6 +30,6 @@
 	<string name="sin_conexion">"No se puede conectar con el servidor"</string>
 	<string name="acerca_de_version_number">Versión 1.02</string>
 	<string name="acerca_de_derechos">"&#169; 2013 -2014 Artixworks®\n Derechos Reservados"</string>
-	<string name="consultando">Consultando saldo ...</string>
+	<string name="consultando">Consultando saldo&#8230;</string>
 	<string name="info_actualizada">Los datos han sido actualizados</string>
 </resources>
