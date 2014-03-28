@@ -26,8 +26,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private List<String> idCards;
     private String cardName = "";
     private String estadoTarjeta = "";
-    private Object [] objectReturn = new Object[4];
-    private String [] returnData = new String[4];
+    private Object [] objectReturn = new Object[5];
+    private String [] returnData = new String[5];
     private long tarjeta;
     
     public ExpandableListAdapter(Activity context, List<String> idCard, Map<String, List<String>> cardCollection) {

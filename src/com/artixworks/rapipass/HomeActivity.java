@@ -33,7 +33,7 @@ public class HomeActivity extends Activity {
 	@ViewById TextView Txt_numero_tarjeta;
 	@ViewById TextView Txt_title_frame;
 	AlertDialog.Builder builder = null;
-	private String[] returnData = new String[4];
+	private String[] returnData = new String[5];
 	
 	
 	@AfterViews
@@ -49,7 +49,7 @@ public class HomeActivity extends Activity {
 
 	@Background
 	void connectItem(long tarjeta) {
-		Object objectReturn [] = new Object[4];
+		Object objectReturn [] = new Object[5];
 		presentarProgressBar();//Abre el progressDialog
 		objectReturn = HttpCalls.getHttpData(tarjeta);
 		
