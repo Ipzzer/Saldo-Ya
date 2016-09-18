@@ -2,7 +2,8 @@
 
 ![Android](https://developer.android.com/images/brand/en_app_rgb_wo_45.png)
  
- ## Deprecated
+ @Deprecated
+ 
 Primera versión de aplicación android para consulta de saldo en tarjetas Metrobús, Metro y Rapipass Panamá.
 
 ### Instalación
